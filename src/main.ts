@@ -187,11 +187,18 @@ function resizeCanvas() {
     usage: GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST,
   });
 
+  const spawnSize = 200;
+
   const data = new Uint32Array(bufferSize / 4);
   for (let i = 0; i < bufferSize / 4; i++) {
     const x = Math.floor(i / canvas.height);
     const y = i % canvas.height;
-    if (y < canvas.height / 2 && x < 100) {
+    if (
+      x > canvas.width / 2 - spawnSize / 2 &&
+      x < canvas.width / 2 + spawnSize / 2 &&
+      y > canvas.height / 2 - spawnSize / 2 &&
+      y < canvas.height / 2 + spawnSize / 2
+    ) {
       data[i] = Math.floor(Math.random() * 2);
     } else {
       data[i] = 0;
