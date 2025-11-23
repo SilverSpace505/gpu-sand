@@ -1,5 +1,10 @@
 export const mouse = { x: 0, y: 0, down: 0, type: 1 };
 
+const githubBtn = document.getElementById('githubBtn') as HTMLAnchorElement;
+githubBtn.onmousedown = (event) => {
+  event.stopPropagation();
+};
+
 window.addEventListener('mousedown', (event) => {
   mouse.x = event.clientX;
   mouse.y = event.clientY;
